@@ -2,16 +2,19 @@ apply plugin: 'java'
 
 repositories {
     mavenCentral()
+    flatDir {
+       dirs 'libs'
+    }
 }
 
 dependencies {
     compile fileTree(dir: '../build/libs', include: ['*.jar'])
-    compile "com.revolutionanalytics.deployr:jDeployR:7.4.0"
+    compile "com.revolutionanalytics.deployr:jDeployR:7.3.0-1.6"
 }
 
 jar {
     baseName = 'jRBroker'
-    version =  '7.4.0'
+    version =  '7.4.0-1.6'
 }
 
 javadoc {
