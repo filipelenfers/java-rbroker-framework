@@ -1,6 +1,8 @@
 Java RBroker Framework for DeployR
 ==================================
 
+*** This is a fork from the original project to support java 1.6, the original project just supports 1.7 and later. ***
+
 The Java RBroker Framework provides a simple yet powerful API that supports the
 rapid integration of R Analytics inside any Java application. Simply define an
 RTask, submit your task to an instance of RBroker and be notified when
