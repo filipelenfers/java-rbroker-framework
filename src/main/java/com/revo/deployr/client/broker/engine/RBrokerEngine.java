@@ -127,11 +127,15 @@ public abstract class RBrokerEngine implements RBroker {
             /*
              * Make endpoint connection, catch handles failure.
              */
-            try(InputStream is = urlConn.getInputStream()) {
+            InputStream is = urlConn.getInputStream();
+            try {
                 /*
                  * Use try-with-resource to ensure proper
                  * cleanup regardless of outcome.
                  */ 
+            }
+            finally {
+                if(is != null) is.close();
             }
 
         } catch(Exception ex) {
@@ -169,13 +173,13 @@ public abstract class RBrokerEngine implements RBroker {
         } catch (Exception ex) {
 
             if (ex instanceof RClientException)
-                throw ex;
+                throw new RuntimeException(ex);
             else if (ex instanceof RSecurityException)
-                throw ex;
+                throw new RuntimeException(ex);
             else if (ex instanceof RDataException)
-                throw ex;
+                throw new RuntimeException(ex);
             else if (ex instanceof RGridException)
-                throw ex;
+                throw new RuntimeException(ex);
             else
                 throw new RBrokerException("Broker failed to " +
                         "initialize, cause" + ex);
